@@ -1,3 +1,4 @@
+// ANGULAR
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {  ReactiveFormsModule } from '@angular/forms';
@@ -9,13 +10,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { expect } from '@jest/globals';
+// SERVICE
 import { SessionService } from 'src/app/services/session.service';
 import { SessionApiService } from '../../services/session-api.service';
-
+// COMPONENT
 import { FormComponent } from './form.component';
+// JEST
+import { expect } from '@jest/globals';
 
-describe('FormComponent', () => {
+
+// TEST
+describe("Unitary test for the Form component", () => {
   let component: FormComponent;
   let fixture: ComponentFixture<FormComponent>;
 

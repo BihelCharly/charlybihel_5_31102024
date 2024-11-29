@@ -1,15 +1,19 @@
+// ANGULAR
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule, } from '@angular/router/testing';
-import { expect } from '@jest/globals'; 
+// SERVICE
 import { SessionService } from '../../../../services/session.service';
-
+// COMPONENT
 import { DetailComponent } from './detail.component';
+// JEST
+import { expect } from '@jest/globals'; 
 
 
-describe('DetailComponent', () => {
+// TEST
+describe('Unitary test for the Detail component', () => {
   let component: DetailComponent;
   let fixture: ComponentFixture<DetailComponent>; 
   let service: SessionService;
@@ -33,7 +37,7 @@ describe('DetailComponent', () => {
       providers: [{ provide: SessionService, useValue: mockSessionService }],
     })
       .compileComponents();
-      service = TestBed.inject(SessionService);
+     service = TestBed.inject(SessionService);
     fixture = TestBed.createComponent(DetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,13 +1,18 @@
+// ANGULAR
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { expect } from '@jest/globals';
+// SERVICE
 import { SessionService } from 'src/app/services/session.service';
-
+// COMPONENT
 import { ListComponent } from './list.component';
+// JEST
+import { expect } from '@jest/globals';
 
-describe('ListComponent', () => {
+
+// TEST
+describe("Unitary test for the Register component", () => {
   let component: ListComponent;
   let fixture: ComponentFixture<ListComponent>;
 
@@ -32,5 +37,9 @@ describe('ListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should return session's information", () => {
+    expect(component.user).toEqual(mockSessionService.sessionInformation);
   });
 });

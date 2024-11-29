@@ -1,9 +1,13 @@
+// ANGULAR
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+// COMPONENT
+import { NotFoundComponent } from './not-found.component';
+// JEST
 import { expect } from '@jest/globals';
 
-import { NotFoundComponent } from './not-found.component';
 
-describe('NotFoundComponent', () => {
+// TEST
+describe('Unitary test for the NotFound component', () => {
   let component: NotFoundComponent;
   let fixture: ComponentFixture<NotFoundComponent>;
 

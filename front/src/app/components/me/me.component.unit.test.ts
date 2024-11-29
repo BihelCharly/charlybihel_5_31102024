@@ -1,35 +1,47 @@
+// ANGULAR
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+// COMPONENT
+import { MeComponent } from './me.component';
+// SERVICE
+import { SessionService } from 'src/app/services/session.service';
+// JEST
 import { expect } from '@jest/globals';
 
-import { RegisterComponent } from './register.component';
 
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+// TEST
+describe('Unitary test for the Me component', () => {
+  let component: MeComponent;
+  let fixture: ComponentFixture<MeComponent>;
 
+  const mockSessionService = {
+    sessionInformation: {
+      admin: true,
+      id: 1
+    }
+  }
+  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RegisterComponent],
+      declarations: [MeComponent],
       imports: [
-        BrowserAnimationsModule,
+        MatSnackBarModule,
         HttpClientModule,
-        ReactiveFormsModule,  
         MatCardModule,
         MatFormFieldModule,
         MatIconModule,
         MatInputModule
-      ]
+      ],
+      providers: [{ provide: SessionService, useValue: mockSessionService }],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(MeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

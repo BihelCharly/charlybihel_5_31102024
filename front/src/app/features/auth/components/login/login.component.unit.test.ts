@@ -1,40 +1,42 @@
+// ANGULAR
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+// SERVICE
 import { SessionService } from 'src/app/services/session.service';
+// COMPONENT
+import { LoginComponent } from './login.component';
+// JEST
+import { expect } from '@jest/globals';
 
-import { MeComponent } from './me.component';
 
-describe('MeComponent', () => {
-  let component: MeComponent;
-  let fixture: ComponentFixture<MeComponent>;
+// TEST
+describe('Unitary test for the Login component', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
 
-  const mockSessionService = {
-    sessionInformation: {
-      admin: true,
-      id: 1
-    }
-  }
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MeComponent],
+      declarations: [LoginComponent],
+      providers: [SessionService],
       imports: [
-        MatSnackBarModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
         HttpClientModule,
         MatCardModule,
-        MatFormFieldModule,
         MatIconModule,
-        MatInputModule
-      ],
-      providers: [{ provide: SessionService, useValue: mockSessionService }],
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule]
     })
       .compileComponents();
-
-    fixture = TestBed.createComponent(MeComponent);
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
