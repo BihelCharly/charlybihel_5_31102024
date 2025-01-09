@@ -13,55 +13,47 @@ import { expect } from '@jest/globals';
 import { Router } from '@angular/router';
 
 // TEST
-describe('Unitary test to build the Application', () =>{
+describe('Unitary test to build the Application', () => {
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let router: Router;
 
-  class mockSessionService {
+  class MockSessionService {
     $isLogged(): Observable<boolean> {
       return of<boolean>(true);
     }
-    logOut(): void{};
+    logOut(): void {
+      ('');
+    }
   }
 
-  beforeEach(async () =>{
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientModule,
-        MatToolbarModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-      providers: [
-        { provide: SessionService, useClass: mockSessionService }
-      ]
+      imports: [RouterTestingModule, HttpClientModule, MatToolbarModule],
+      declarations: [AppComponent],
+      providers: [{ provide: SessionService, useClass: MockSessionService }],
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
     router = TestBed.inject(Router);
     app = fixture.componentInstance;
   });
 
-  it('should create the app', ()  => {
+  it('should create the app', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should return true', () =>{
-    app.$isLogged().subscribe((boolean: boolean) =>{
+  it('should return true', () => {
+    app.$isLogged().subscribe((boolean: boolean) => {
       expect(boolean).toEqual(true);
     });
   });
 
-    it("should logout the user", () =>{
-      const sessionService = TestBed.inject(SessionService)
-      jest.spyOn(sessionService, 'logOut');
-      jest.spyOn(router, 'navigate');
-      app.logout();
-      expect(sessionService.logOut).toHaveBeenCalled();
-      expect(router.navigate).toHaveBeenCalledWith(['']);
-     });
-    
+  it('should logout the user', () => {
+    const sessionService = TestBed.inject(SessionService);
+    jest.spyOn(sessionService, 'logOut');
+    jest.spyOn(router, 'navigate');
+    app.logout();
+    expect(sessionService.logOut).toHaveBeenCalled();
+    expect(router.navigate).toHaveBeenCalledWith(['']);
+  });
 });
-

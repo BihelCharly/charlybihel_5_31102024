@@ -3,27 +3,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterTestingModule, } from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 // SERVICE
 import { SessionService } from '../../../../services/session.service';
 // COMPONENT
 import { DetailComponent } from './detail.component';
 // JEST
-import { expect } from '@jest/globals'; 
-
+import { expect } from '@jest/globals';
 
 // TEST
 describe('Unitary test for the Detail component', () => {
   let component: DetailComponent;
-  let fixture: ComponentFixture<DetailComponent>; 
+  let fixture: ComponentFixture<DetailComponent>;
   let service: SessionService;
 
   const mockSessionService = {
     sessionInformation: {
       admin: true,
-      id: 1
-    }
-  }
+      id: 1,
+    },
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,13 +30,12 @@ describe('Unitary test for the Detail component', () => {
         RouterTestingModule,
         HttpClientModule,
         MatSnackBarModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
       ],
-      declarations: [DetailComponent], 
+      declarations: [DetailComponent],
       providers: [{ provide: SessionService, useValue: mockSessionService }],
-    })
-      .compileComponents();
-     service = TestBed.inject(SessionService);
+    }).compileComponents();
+    TestBed.inject(SessionService);
     fixture = TestBed.createComponent(DetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -47,4 +45,3 @@ describe('Unitary test for the Detail component', () => {
     expect(component).toBeTruthy();
   });
 });
-
